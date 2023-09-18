@@ -69,6 +69,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<?= env('APP_URL') ?>ranking">Ranking</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= env('APP_URL') ?>profile">Profile</a>
+        </li>
       </ul>
 
     </div>

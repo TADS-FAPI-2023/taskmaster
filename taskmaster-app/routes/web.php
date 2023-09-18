@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,5 @@ Route::get('/task', function () {
 Route::get('/ranking', function () {
     return view('header') . view('ranking');
 });
+
+Route::get('/profile', [Profile::class, 'profile']);
