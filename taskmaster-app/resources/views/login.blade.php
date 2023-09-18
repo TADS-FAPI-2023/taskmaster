@@ -9,7 +9,8 @@
 </head>
 
 <body>
-  <form action=<?= url('/login' ) ?> method="get">
+  <form action=<?= url('/login' ) ?> method="POST">
+    @csrf
     <label for="registration">Matricula:</label>
     <input type="text" id="registration" name="registration">
 

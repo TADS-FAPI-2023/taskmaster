@@ -14,9 +14,16 @@ class LoginController extends BaseController
             return redirect(url('/'));
         }
 
-        if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['registration']) && isset($_GET['password'])) {
-            $id = $_GET['registration'];
-            $password = $_GET['password'];
+        return view('login');
+
+    }
+
+    public function login()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['registration'];
+            $password = $_POST['password'];
 
             if ($id == '123' && $password == '123') {
                 $_SESSION['id'] = $id;
@@ -25,13 +32,6 @@ class LoginController extends BaseController
                 echo "Login ou senha incorretos.";
             }
         }
-
-        return view('login');
-
-    }
-
-    public function login()
-    {
 
     }
 
