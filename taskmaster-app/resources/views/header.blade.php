@@ -88,7 +88,11 @@ if (!isset($_SESSION["id"])) {
           <a class="nav-link" href="<?= env('APP_URL') ?>ranking">Ranking</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?= env('APP_URL') ?>profile">Profile</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<?= env('APP_URL') ?>logout">logout</a>
+        </li>
       </ul>
 
     </div>

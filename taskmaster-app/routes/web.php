@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
@@ -29,3 +30,5 @@ Route::get('/ranking', function () {
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::get('/profile', [Profile::class, 'profile']);
