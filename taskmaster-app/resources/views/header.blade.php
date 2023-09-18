@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (
+  isset($_SESSION["LAST_ACTIVITY"]) &&
+  time() - $_SESSION["LAST_ACTIVITY"] > 1800
+) {
+
+  session_unset();
+  session_destroy();
+}
+$_SESSION["LAST_ACTIVITY"] = time();
+
+if (!isset($_SESSION["id"])) {
+  header("Location: login");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,26 +29,26 @@
   <title>TaskMaster</title>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-    </script>
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
+  </script>
 
   <script>
-    //fazer função de ativo na navbar do bootstrap pegar o baseurl do laravel se n tiver nada depois do / ativar o home
-    $(document).ready(function () {
-      var url = window.location.href;
-      console.log(url);
-      $('.navbar-nav li a').each(function () {
-        console.log(this.href, url, url === (this.href))
-        if (url === (this.href)) {
-          $(this).closest('li').addClass('active');
-        }
-      });
+  //fazer função de ativo na navbar do bootstrap pegar o baseurl do laravel se n tiver nada depois do / ativar o home
+  $(document).ready(function() {
+    var url = window.location.href;
+    console.log(url);
+    $('.navbar-nav li a').each(function() {
+      console.log(this.href, url, url === (this.href))
+      if (url === (this.href)) {
+        $(this).closest('li').addClass('active');
+      }
     });
+  });
   </script>
 </head>
 <header class="masthead mb-auto">
@@ -69,6 +87,8 @@
         <li class="nav-item">
           <a class="nav-link" href="<?= env('APP_URL') ?>ranking">Ranking</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= env('APP_URL') ?>logout">logout</a>
       </ul>
 
     </div>
