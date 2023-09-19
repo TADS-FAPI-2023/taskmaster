@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -23,54 +23,55 @@
                 </ul>
             </div>
         </div>
-    </header>
-    <div class="container">
-        <div class="container-card">
-            <div class="card-usuario">
-                <img src="./img/avatar.jpg" class="img-card">
-                <p>Lucas Chang</p>
-                <p>28/07/2004</p>
-                <p>Desenvolvedor Front</p>
-            </div>
-            <div class="card-informacoes">
-                <div class="informacoes-titulo">
-                    <h2>Biografia</h2>
-                </div>
-                <div class="informacoes-biografia">
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                    commodo consequat."
-                </div>
-                <div class="informacoes-medal">
-                    <img src="./img/bronzeMedal.jpg" class="medalha-img">
-                    <img src="./img/bronzeMedal.jpg" class="medalha-img">
-                    <img src="./img/bronzeMedal.jpg" class="medalha-img">
-                    <p id="more-medal">+5</p>
-                </div>
-            </div>
-        </div>
+    </header> -->
+<link rel="stylesheet" href="{{asset('css/profile.css')}}">
+<div class="container">
+  <div class="container-card">
+    <div class="card-usuario">
+      <img src="./img/avatar.jpg" class="img-card">
+      <p>Lucas Chang</p>
+      <p>28/07/2004</p>
+      <p>Desenvolvedor Front</p>
     </div>
-    <div class="container-informacoes">
-        <div class="box-informacoes">
-            <img src="./img/rank.png" class="img-informacoes">
-            <h3>9º</h3>
-            <p>Lugar no ranking geral</p>
-        </div>
-        <div class="box-informacoes">
-            <img src="./img/pontos.png" class="img-informacoes">
-            <h3>122.00</h3>
-            <p>Pontos acumulados</p>
-        </div>
-        <div class="box-informacoes">
-            <img src="./img/projeto.png" class="img-informacoes">
-            <h3>83</h3>
-            <p>Projetos concluidos</p>
-        </div>
+    <div class="card-informacoes">
+      <div class="informacoes-titulo">
+        <h2>Biografia</h2>
+      </div>
+      <div class="informacoes-biografia">
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat."
+      </div>
+      <div class="informacoes-medal">
+        <img src="./img/bronzeMedal.jpg" class="medalha-img">
+        <img src="./img/bronzeMedal.jpg" class="medalha-img">
+        <img src="./img/bronzeMedal.jpg" class="medalha-img">
+        <p id="more-medal">+5</p>
+      </div>
     </div>
+  </div>
+</div>
+<div class="container-informacoes">
+  <div class="box-informacoes">
+    <img src="./img/rank.png" class="img-informacoes">
+    <h3>9º</h3>
+    <p>Lugar no ranking geral</p>
+  </div>
+  <div class="box-informacoes">
+    <img src="./img/pontos.png" class="img-informacoes">
+    <h3>122.00</h3>
+    <p>Pontos acumulados</p>
+  </div>
+  <div class="box-informacoes">
+    <img src="./img/projeto.png" class="img-informacoes">
+    <h3>83</h3>
+    <p>Projetos concluidos</p>
+  </div>
+</div>
 
 
-
+<!-- 
     <script>
         const buttonIcon = document.getElementById('button-menu');
         const menuDropdown = document.getElementById('menu-dropdown');
@@ -82,4 +83,4 @@
         });
     </script>
 </body>
-</html>
+</html> -->
