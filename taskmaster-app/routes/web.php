@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Profile;
-use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FileController;
