@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost/taskmaster/taskmaster-app/public/'),
 
     'asset_url' => env('ASSET_URL'),
 
@@ -159,6 +159,7 @@ return [
             /*
              * Package Service Providers...
              */
+            Aws\Laravel\AwsServiceProvider::class,
 
             /*
              * Application Service Providers...
@@ -183,6 +184,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'AWS' => Aws\Laravel\AwsFacade::Class,
     ])->toArray(),
 
 ];

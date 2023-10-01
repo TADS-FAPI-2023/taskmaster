@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Ago-2023 às 00:59
+-- Tempo de geração: 01/10/2023 às 22:19
 -- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.0.28
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `project`
+-- Estrutura para tabela `files`
+--
+
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `files`
+--
+
+INSERT INTO `files` (`id`, `filename`, `description`, `updated_at`, `created_at`) VALUES
+(14, 'task_master.sql', 'Banco', '2023-10-01 20:08:07', '2023-10-01 20:08:07');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `project`
 --
 
 CREATE TABLE `project` (
@@ -37,7 +58,7 @@ CREATE TABLE `project` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `task`
+-- Estrutura para tabela `task`
 --
 
 CREATE TABLE `task` (
@@ -58,7 +79,7 @@ CREATE TABLE `task` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `task_project`
+-- Estrutura para tabela `task_project`
 --
 
 CREATE TABLE `task_project` (
@@ -70,7 +91,7 @@ CREATE TABLE `task_project` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `task_user`
+-- Estrutura para tabela `task_user`
 --
 
 CREATE TABLE `task_user` (
@@ -82,7 +103,7 @@ CREATE TABLE `task_user` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `user`
+-- Estrutura para tabela `user`
 --
 
 CREATE TABLE `user` (
@@ -101,19 +122,25 @@ CREATE TABLE `user` (
 --
 
 --
--- Índices para tabela `project`
+-- Índices de tabela `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `project`
 --
 ALTER TABLE `project`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `task`
+-- Índices de tabela `task`
 --
 ALTER TABLE `task`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `task_project`
+-- Índices de tabela `task_project`
 --
 ALTER TABLE `task_project`
   ADD PRIMARY KEY (`id`),
@@ -121,7 +148,7 @@ ALTER TABLE `task_project`
   ADD KEY `task_id` (`task_id`);
 
 --
--- Índices para tabela `task_user`
+-- Índices de tabela `task_user`
 --
 ALTER TABLE `task_user`
   ADD PRIMARY KEY (`id`),
@@ -129,15 +156,21 @@ ALTER TABLE `task_user`
   ADD KEY `task_id` (`task_id`);
 
 --
--- Índices para tabela `user`
+-- Índices de tabela `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `project`
@@ -170,18 +203,18 @@ ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `task_project`
+-- Restrições para tabelas `task_project`
 --
 ALTER TABLE `task_project`
   ADD CONSTRAINT `task_project_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),
   ADD CONSTRAINT `task_project_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`);
 
 --
--- Limitadores para a tabela `task_user`
+-- Restrições para tabelas `task_user`
 --
 ALTER TABLE `task_user`
   ADD CONSTRAINT `task_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
