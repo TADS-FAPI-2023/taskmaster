@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    display: flex;
+    padding: 16px 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    background-color: #13111B;
+    box-shadow: 0 0 9px rgb(61, 59, 59);
+}
+
+.header-titulo {
+    margin-left: 32px;
+    background-color: #1E1D27;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.header-perfil {
+    display: flex;
+    align-items: center;
+    margin: 0 64px 0;
+    position: relative;
+    color: #fff;
+}
+
+#foto-perfil {
+    width: 32px;
+    height: 32px;
+    border-radius: 22px;
+    margin-right: 12px;
+}
+
+#nome-usuario {
+    border-bottom: solid 1px #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #f9f9f9;
+    width: 130%;
+    border-radius: 8px;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin: 4px 0;
+    padding: 8px 8px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+#button-menu {
+    display: block;
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.icons {
+    width: 19px;
+    height: 19px;
+    margin-right: 6px;
+}
+
+#button-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#menu-dropdown.active {
+    display: block;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}
+
+.container-card {
+    width: 70%;
+    display: flex;
+    border: 1px solid #d7dbdf;
+    border-radius: 10px;
+}
+
+.card-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-right: 1px solid #d7dbdf;
+    background: linear-gradient(to bottom, #37286D 50%, #fff 50%);
+}
+
+.card-informacoes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.informacoes-biografia {
+    padding: 0 16px;
+    margin: 16px 0;
+}
+
+.informacoes-medal {
+    display: flex;
+    border-top: solid 1px #1E1D27;
+    margin-top: 16px;
+    align-items: center;
+    column-gap: 8px;
+    padding: 8px 0;
+}
+
+.medalha-img {
+    width: 85px;
+    height: 105px;
+}
+
+#more-medal {
+    font-size: 24px;
+    background-color: #37286D;
+    border-radius: 64px;
+    padding: 16px 16px;
+    color: #fff;
+    margin-left: 16px;
+    cursor: pointer;
+    border: 1px solid #91C9FF;
+    outline: none;
+    transition: 1s ease-in-out;
+}
+
+#more-medal:hover {
+    transition: 1s ease-in-out;
+    background: #220ad8;
+}
+
+
+
+
+
+
+
+
+
+.img-card {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 6px solid #37286D;
+    margin-bottom: 16px;
+}
+
+.container-informacoes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 64px;
+    padding: 40px 64px;
+    background-color: #37286D;
+    color: #d7dbdf;
+}
+
+.box-informacoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-informacoes {
+    width: 26px;
+    height: 26px;
+}
