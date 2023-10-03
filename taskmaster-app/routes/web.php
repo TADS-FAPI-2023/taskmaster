@@ -24,9 +24,14 @@ Route::get('/ranking', function () {
     return view('header') . view('ranking');
 });
 
+Route::get('/task', function () {
+    return view('header') . view('task');
+});
+
+
 
 Route::resource('files', FileController::class);
-Route::get('/task', [FileController::class, 'index']);
+Route::get('/teste', [FileController::class, 'index']);
 
 
 Route::get('/login', [LoginController::class, 'index']);
