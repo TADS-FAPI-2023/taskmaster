@@ -18,7 +18,7 @@
         <div class="form-group col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
             <label for="description">Descrição *</label>
             <textarea type="description" rows="4" class="form-control @error('description') is-invalid @enderror"
-                      name="description" placeholder="Digite uma descrição sobre este arquivo">{{ old('description') }}</textarea>
+                name="description" placeholder="Digite uma descrição sobre este arquivo">{{ old('description') }}</textarea>
             @if ($errors->has('description'))
                 <span class="invalid-feedback">
                     <strong>{{ $errors->first('description') }}</strong>
