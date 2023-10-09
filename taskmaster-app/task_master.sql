@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/10/2023 às 14:47
+-- Tempo de geração: 01/10/2023 às 22:19
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `files`
 --
 
+
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `filename`, `description`, `updated_at`, `created_at`) VALUES
-(18, 'Arquivos-teste.rar', 'Zip teste', '2023-10-06 12:03:53', '2023-10-06 12:03:53');
+(14, 'task_master.sql', 'Banco', '2023-10-01 20:08:07', '2023-10-01 20:08:07');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,7 @@ CREATE TABLE `task` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
-  `file` int(255) DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `comment` text DEFAULT NULL,
   `rating` float DEFAULT NULL,
@@ -137,8 +138,7 @@ ALTER TABLE `project`
 -- Índices de tabela `task`
 --
 ALTER TABLE `task`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `file` (`file`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `task_project`
@@ -171,7 +171,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `project`
@@ -206,12 +206,6 @@ ALTER TABLE `user`
 --
 -- Restrições para tabelas despejadas
 --
-
---
--- Restrições para tabelas `task`
---
-ALTER TABLE `task`
-  ADD CONSTRAINT `file` FOREIGN KEY (`file`) REFERENCES `files` (`id`);
 
 --
 -- Restrições para tabelas `task_project`
