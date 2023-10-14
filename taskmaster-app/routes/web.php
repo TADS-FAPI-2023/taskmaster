@@ -4,6 +4,7 @@ use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/profile', [Profile::class, 'profile']);
+
+Route::get('/formulario', [TasksController::class, 'exibirFormulario']);
+Route::post('/formulario', [TasksController::class, 'processarFormulario']);
