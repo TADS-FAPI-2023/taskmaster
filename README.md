@@ -13,3 +13,4 @@
 - copiar o .env.example
 - abrir no navegador http://localhost/taskmaster/taskmaster-app/public/
 - clicar no botão verde escrito generate api key
+Alo...
