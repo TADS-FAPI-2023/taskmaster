@@ -9,7 +9,7 @@ class TasksController extends Controller
 {
     public function exibirFormulario()
     {
-        return view('task.blade.php');
+        return view('header') . view('task');
     }
 
     public function processarFormulario(Request $request)
