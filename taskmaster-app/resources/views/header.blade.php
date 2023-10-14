@@ -50,7 +50,7 @@ if (!isset($_SESSION['id'])) {
 <header class="masthead mb-auto">
     <nav class="navbar navbar-expand-lg navbar-dark px-5"
         style="background-color: #13111B; box-shadow: 5px 1px 5px Black;">
-        <a class="navbar-brand" href="<?= env('url') ?>">
+        <a class="navbar-brand" href="<?= env('APP_URL') ?>">
             <svg width="160" height="31" viewBox="0 0 160 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_35_44)">
                     <path
