@@ -50,6 +50,7 @@ SET time_zone = "+00:00";
 
 --
 
+
 CREATE TABLE
     `files` (
         `id` int(11) NOT NULL,
@@ -58,6 +59,7 @@ CREATE TABLE
         `updated_at` datetime NOT NULL,
         `created_at` datetime NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
 
 --
 
