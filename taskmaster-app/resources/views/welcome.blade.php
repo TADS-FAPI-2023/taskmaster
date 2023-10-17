@@ -13,7 +13,7 @@
       background: #1E1D27;">
     Venha ser um contribuidor e ajude a comunidade escoteira
   </div>
-  <div class"container-fluid mx-2 p-4" style="
+  <div class="container-fluid mx-2 p-4" style="
       border-radius: 0.5rem;
       background: #1E1D27;">
     Você podera ganhar medalhas e pontos por contribuir com a comunidade escoteira

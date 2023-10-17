@@ -29,7 +29,9 @@ Route::get('/task', function () {
     return view('header') . view('task');
 });
 
-
+Route::get('/login', function () {
+    return view('header') . view('login');
+});
 
 Route::resource('files', FileController::class);
 Route::get('/teste', [FileController::class, 'index']);
