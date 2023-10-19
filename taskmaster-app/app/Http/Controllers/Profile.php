@@ -9,6 +9,6 @@ class Profile extends Controller
 {
     public function profile()
     {
-        return view("profile");
+        return view("header") . view("profile");
     }
 }
