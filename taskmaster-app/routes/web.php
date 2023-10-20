@@ -4,6 +4,7 @@ use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/profile', [Profile::class, 'profile']);
+
+Route::get('/Users', [userController::class, 'index'])->name('users.index');
+Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
+Route::post('/Users', [userController::class, 'store'])->name('users.store');
