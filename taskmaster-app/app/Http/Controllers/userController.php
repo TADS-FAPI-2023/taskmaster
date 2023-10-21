@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\userRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -28,7 +29,7 @@ class userController extends Controller
         return view('users.create');
     }
 
-    public function store(Request $request)
+    public function store(userRequest $request)
     {
         $cad=$this->objUser->create([
             'name'=>$request->name,
