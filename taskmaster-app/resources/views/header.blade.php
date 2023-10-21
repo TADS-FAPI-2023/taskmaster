@@ -1,17 +1,3 @@
-<?php
-session_start();
-
-if (isset($_SESSION['LAST_ACTIVITY']) && time() - $_SESSION['LAST_ACTIVITY'] > 1800) {
-    session_unset();
-    session_destroy();
-}
-$_SESSION['LAST_ACTIVITY'] = time();
-
-if (!isset($_SESSION['id'])) {
-    header('Location: login');
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

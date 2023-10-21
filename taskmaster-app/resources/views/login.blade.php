@@ -59,12 +59,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="textoNavbar">
-            <form  class="d-flex" action=<?= url('/login') ?> method="POST">
+            <form class="d-flex" action=<?= url('/login') ?> method="POST">
                 @csrf
 
-                <input class="form-control mr-2" type="text" id="registration" name="registration" placeholder="Matricula">
-                <input  class="form-control mr-2"    type="password" id="password" name="password" placeholder="Senha">
-                <input  class="btn btn-primary"  type="submit" value="Entrar" class="buttom-primary">
+                <input class="form-control mr-2" type="text" id="name" name="name" placeholder="Nome">
+                <input class="form-control mr-2" type="password" id="password" name="password" placeholder="Senha">
+                <input class="btn btn-primary" type="submit" value="Entrar" class="buttom-primary">
             </form>
 
         </div>
@@ -72,9 +72,9 @@
 </header>
 
 <body style="background-color: #140920;">
-
-
-
+    @auth
+        Logado
+    @endauth
 </body>
 
 </html>

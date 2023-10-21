@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Profile;
+use App\Models\project;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FileController;
@@ -17,31 +19,46 @@ use App\Http\Controllers\TasksController;
 |
 */
 
-Route::get('/', function () {
-    return view('header') . view('welcome');
+
+Auth::routes();
+
+
+
+// so pode acessar as rotas abaixo se estiver logado 
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', function () {
+        return view('header') . view('welcome');
+    });
+    
+    Route::get('/ranking', function () {
+
+
+        return view('header') . view('ranking');
+    });
+    
+    Route::get('/task', function () {
+
+        $projects = project::all();
+
+        return view('header') . view('task' , ['projects' => $projects]);
+    });
+    
+    
+    Route::resource('files', FileController::class);
+    Route::get('/teste', [FileController::class, 'index']);
+    
+    
+
+    Route::get('/profile', [Profile::class, 'profile']);
+    
+    Route::get('/formulario', [TasksController::class, 'exibirFormulario']);
+    Route::post('/formulario', [TasksController::class, 'processarFormulario']);
+    
+
 });
 
-Route::get('/ranking', function () {
-    return view('header') . view('ranking');
-});
 
-Route::get('/task', function () {
-    return view('header') . view('task');
-});
-
-Route::get('/login', function () {
-    return view('header') . view('login');
-});
-
-Route::resource('files', FileController::class);
-Route::get('/teste', [FileController::class, 'index']);
-
-
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
-
-Route::get('/profile', [Profile::class, 'profile']);
-
-Route::get('/formulario', [TasksController::class, 'exibirFormulario']);
-Route::post('/formulario', [TasksController::class, 'processarFormulario']);
