@@ -9,7 +9,7 @@ class TasksController extends Controller
 {
     public function exibirFormulario()
     {
-        return view('header') . view('task');
+        return view('header') . view('formulario');
     }
 
     public function processarFormulario(Request $request)
@@ -22,6 +22,6 @@ class TasksController extends Controller
 
         Project::create($request->all());
 
-        return redirect('/formulario')->with('success', 'Dados registrados com sucesso!');
+        return redirect('/task')->with('success', 'Dados registrados com sucesso!');
     }
 }
