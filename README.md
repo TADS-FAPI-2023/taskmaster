@@ -9,8 +9,9 @@
 - ctrl+' para abrir o console
 - digitar "cd .\taskmaster-app\" e executar
 - digitar "composer install"
+- -digitar "php artisan migrate"
 - dentro da pasta taskmaster-app criar arquivo .env
 - copiar o .env.example
 - abrir no navegador http://localhost/taskmaster/taskmaster-app/public/
 - clicar no botão verde escrito generate api key
-Alo...
+
