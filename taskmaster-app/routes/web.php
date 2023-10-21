@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FileController;
-use App\Http\Controllers\TasksController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,15 +33,8 @@ Route::middleware(['auth'])->group(function () {
 
         return view('header') . view('ranking');
     });
-    Route::resource('task', TasksController::class);
-    Route::get('/task',[TasksController::class, 'index']);
-    // Route::get('/task', function () {
-
-    //     $projects = project::all();
-
-    //     return view('header') . view('task' , ['projects' => $projects]);
-    // });
-
+    Route::resource('task', ProjectController::class);
+    Route::get('/task',[ProjectController::class, 'index']);
 
     Route::resource('files', FileController::class);
     Route::get('/teste', [FileController::class, 'index']);
@@ -50,8 +43,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [Profile::class, 'profile']);
 
-    Route::get('/formulario', [TasksController::class, 'exibirFormulario']);
-    Route::post('/formulario', [TasksController::class, 'processarFormulario']);
+    Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
+    Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
 
 
 });
