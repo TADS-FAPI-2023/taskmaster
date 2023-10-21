@@ -36,7 +36,7 @@
 <header class="masthead mb-auto">
     <nav class="navbar navbar-expand-lg navbar-dark px-5"
         style="background-color: #13111B; box-shadow: 5px 1px 5px Black;">
-        <a class="navbar-brand" href="<?= env('APP_URL') ?>">
+        <a class="navbar-brand" href="<?= url('') ?>/">
             <svg width="160" height="31" viewBox="0 0 160 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_35_44)">
                     <path
@@ -58,26 +58,40 @@
             aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="textoNavbar">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= env('APP_URL') ?>">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= env('APP_URL') ?>task">Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= env('APP_URL') ?>ranking">Ranking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= env('APP_URL') ?>profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= env('APP_URL') ?>logout">logout</a>
-                </li>
-            </ul>
 
-        </div>
+        @auth
+
+            <div class="collapse navbar-collapse" id="textoNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('') ?>/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('/task') ?>">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('/ranking') ?>">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('/profile') ?>">Profile</a>
+                    </li>
+
+                </ul>
+                <a class=" ml-auto btn btn-primary " href="<?= url('/logout') ?>">logout</a>
+            </div>
+        @else
+            <div class="collapse navbar-collapse justify-content-end" id="textoNavbar">
+                <form class="d-flex" action=<?= url('/login') ?> method="POST">
+                    @csrf
+
+                    <input class="form-control mr-2" type="text" id="name" name="name" placeholder="Nome">
+                    <input class="form-control mr-2" type="password" id="password" name="password" placeholder="Senha">
+                    <input class="btn btn-primary" type="submit" value="Entrar" class="buttom-primary">
+                </form>
+
+            </div>
+        @endauth
+
     </nav>
 </header>
 

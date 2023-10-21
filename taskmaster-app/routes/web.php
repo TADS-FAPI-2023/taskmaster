@@ -27,10 +27,7 @@ Auth::routes();
 // so pode acessar as rotas abaixo se estiver logado 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', function () {
-        return view('header') . view('welcome');
-    });
-    
+  
     Route::get('/ranking', function () {
 
 
@@ -58,7 +55,10 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-
+Route::get('/', function () {
+    return view('header') . view('welcome');
+});
+ 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);

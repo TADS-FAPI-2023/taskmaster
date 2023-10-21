@@ -15,7 +15,7 @@ class LoginController extends BaseController
             return redirect(url('/'));
         }
 
-        return view('login');
+        return view('header') .view('welcome');
 
     }
 
