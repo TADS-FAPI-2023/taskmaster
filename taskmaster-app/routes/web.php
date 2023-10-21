@@ -24,41 +24,42 @@ Auth::routes();
 
 
 
-// so pode acessar as rotas abaixo se estiver logado 
+// so pode acessar as rotas abaixo se estiver logado
 Route::middleware(['auth'])->group(function () {
 
-  
+
     Route::get('/ranking', function () {
 
 
         return view('header') . view('ranking');
     });
-    
-    Route::get('/task', function () {
+    Route::resource('task', TasksController::class);
+    Route::get('/task',[TasksController::class, 'index']);
+    // Route::get('/task', function () {
 
-        $projects = project::all();
+    //     $projects = project::all();
 
-        return view('header') . view('task' , ['projects' => $projects]);
-    });
-    
-    
+    //     return view('header') . view('task' , ['projects' => $projects]);
+    // });
+
+
     Route::resource('files', FileController::class);
     Route::get('/teste', [FileController::class, 'index']);
-    
-    
+
+
 
     Route::get('/profile', [Profile::class, 'profile']);
-    
+
     Route::get('/formulario', [TasksController::class, 'exibirFormulario']);
     Route::post('/formulario', [TasksController::class, 'processarFormulario']);
-    
+
 
 });
 
 Route::get('/', function () {
     return view('header') . view('welcome');
 });
- 
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
