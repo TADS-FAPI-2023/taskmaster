@@ -40,11 +40,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/teste', [FileController::class, 'index']);
 
 
-
     Route::get('/profile', [Profile::class, 'profile']);
 
     Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
     Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
+
+    Route::get('/task/{project_id}', [ProjectController::class, 'showTasks'])->name('show.tasks');
 
 
 });
