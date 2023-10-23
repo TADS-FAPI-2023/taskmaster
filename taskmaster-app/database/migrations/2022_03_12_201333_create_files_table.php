@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('filename');
             $table->string('description');
             $table->timestamps();
-            $table->timestamps();
         });
     }
 

@@ -23,7 +23,7 @@ class ProjectController extends Controller
 
         Project::create($request->all());
 
-        return redirect('/projects')->with('success', 'Dados registrados com sucesso!');
+        return redirect('/task')->with('success', 'Dados registrados com sucesso!');
     }
 
     public function index()
@@ -34,10 +34,42 @@ class ProjectController extends Controller
 
     public function showTasks($project_id)
     {
-        $tasks = Task::where('project_id', $project_id)->get();
-        $project = Project::find($project_id);
 
-        return view('header')->view('task.task', ['project' => $project, 'tasks' => $tasks]);
+        $project = Project::find($project_id);
+        $tasks = Task::where('project_id', $project_id)->get();
+
+        return view('header') . view('task.task', ['project' => $project, 'tasks' => $tasks]);
+
+
+    }
+
+    public function taskForm(Request $request){
+
+        $request->validate([
+            'project_id' => 'required',
+        ]);
+        // dd($request);
+        return view('header'). view('task.taskform', ['project_id' => $request->project_id]);
+
+    }
+
+    public function sendTaskForm(Request $request){
+        // dd($request);
+       $request->validate([
+            'name' => 'required',
+            'project_id' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'time_limit' => 'required',
+            'difficulty' => 'required',
+        ]);
+
+        Task::create($request->all());
+
+
+
+      return redirect('/tarefa/'. $request->project_id)->with('success', 'Dados registrados com sucesso!');
+
     }
 }
 

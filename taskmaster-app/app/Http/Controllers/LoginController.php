@@ -11,9 +11,6 @@ class LoginController extends BaseController
 {
     public function index()
     {
-        if (isset($_SESSION['user_id'])) {
-            return redirect(url('/'));
-        }
 
         return view('header') .view('welcome');
 
@@ -26,14 +23,14 @@ class LoginController extends BaseController
             'password' => 'required',
         ]);
 
-   
+
         if (auth()->attempt(['name' => $request->name, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-          
+
             return redirect(url('/'));
         }
-        
+
         return back()->withErrors([
             'name' => 'The provided credentials do not match our records.',
         ]);

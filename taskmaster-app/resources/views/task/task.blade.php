@@ -1,5 +1,9 @@
 <div class="container mt-4 p-4" style="border-radius: 0.5rem; background: #1E1D27;">
-    <a class="btn btn-primary" href=<?= url('/taskform') ?>>Cadastrar Tarefa</a>
+    <form  action=<?= url('/taskform') ?> method="post">
+        @csrf
+        <input name="project_id" type="hidden" value="<?= $project->id ?>">
+        <input type="submit" class="btn btn-primary" value="Cadastrar Tarefa">
+    </form>
 </div>
 
 <div class="container mt-4">
@@ -13,6 +17,12 @@
                 border-radius: 0.5rem;
                 background: #1E1D27;
                 overflow: hidden;
+                color: #f4f4f5;
+        font-family: Inter;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
                 ">
                 <h2>Tarefa: {{ $task->name }}</h2>
                 <p>Tipo: {{ $task->type }}</p>

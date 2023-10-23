@@ -45,7 +45,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
     Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
 
-    Route::get('/task/{project_id}', [ProjectController::class, 'showTasks'])->name('show.tasks');
+    Route::get('/tarefa/{project_id}', [ProjectController::class, 'showTasks']);
+    Route::post('/taskform', [ProjectController::class, 'taskForm']);
+    Route::post('/sendTaskForm', [ProjectController::class, 'sendTaskForm']);
 
 
 });

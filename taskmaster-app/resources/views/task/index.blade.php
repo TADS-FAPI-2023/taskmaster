@@ -19,7 +19,8 @@
                 <h2>Projeto: {{ $project->name }}</h2>
                 <p>Descrição: <br> {{ $project->description }}</p>
                 <p>Status: {{ $project->status }}</p>
-                <a class="btn btn-primary" href="{{ route('show.tasks', ['project_id' => $project->id]) }}">Ver</a>
+                {{-- <a class="btn btn-primary" href="{{ route('show.tasks', ['project_id' => $project->id]) }}">Ver</a> --}}
+                <a class="btn btn-primary" href="{{ url('/tarefa/' . $project->id) }}">Ver</a>
                 <a class="btn btn-primary" href="{{ url('/formulario/' . $project->id) }}">Editar</a>
             </div>
         </div>
