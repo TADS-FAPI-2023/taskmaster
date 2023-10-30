@@ -32,19 +32,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/teste', [FileController::class, 'index']);
     #FILES
 
-
-
-
-});
-
-Route::get('/', function () {
-    return view('header') . view('welcome');
-});
-
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login' , [LoginController::class, 'login']);
-Route::get('/logout', [LoginController::class, 'logout']);
-
     #PROJETO
     Route::resource('task', ProjectController::class);
     Route::get('/task',[ProjectController::class, 'index']);
@@ -60,6 +47,17 @@ Route::get('/logout', [LoginController::class, 'logout']);
     Route::put('/updateActive/{id}', [TaskController::class,'active'])->name('updateActive');
     Route::put('/tarefa/{id}', [TaskController::class,'update'])->name('tarefa.update');
     #TASK
+
+
+});
+
+Route::get('/', function () {
+    return view('header') . view('welcome');
+});
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login' , [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 
 Route::get('/ranking', function () {
