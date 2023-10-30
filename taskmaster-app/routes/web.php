@@ -49,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/taskform', [ProjectController::class, 'taskForm']);
     Route::post('/sendTaskForm', [ProjectController::class, 'sendTaskForm']);
 
+    Route::put('/updateActive/{id}', [ProjectController::class,'active'])->name('updateActive');
+    Route::put('/tarefa/{id}', [ProjectController::class,'update'])->name('tarefa.update');
 
 });
 
