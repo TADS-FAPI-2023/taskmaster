@@ -8,11 +8,6 @@ use App\Models\Task;
 class TaskController extends Controller
 {
 
-    public function index()
-    {
-        $projects = Project::all();
-        return view('header') . view('task.index', ['projects' => $projects]);
-    }
 
     public function showTasks($project_id)
     {

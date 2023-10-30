@@ -32,22 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/teste', [FileController::class, 'index']);
     #FILES
 
-    #PROJETO
-    Route::resource('task', ProjectController::class);
-    Route::get('/task',[ProjectController::class, 'index']);
-    Route::get('/profile', [Profile::class, 'profile']);
-    Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
-    Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
-    #PROJETO
 
-
-    #TASK
-    Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
-    Route::post('/taskform', [TaskController::class, 'taskForm']);
-    Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
-    Route::put('/updateActive/{id}', [TaskController::class,'active'])->name('updateActive');
-    Route::put('/tarefa/{id}', [TaskController::class,'update'])->name('tarefa.update');
-    #TASK
 
 
 });
@@ -60,9 +45,21 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
+    #PROJETO
+    Route::resource('task', ProjectController::class);
+    Route::get('/task',[ProjectController::class, 'index']);
+    Route::get('/profile', [Profile::class, 'profile']);
+    Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
+    Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
+    #PROJETO
 
-
-
+    #TASK
+    Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
+    Route::post('/taskform', [TaskController::class, 'taskForm']);
+    Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
+    Route::put('/updateActive/{id}', [TaskController::class,'active'])->name('updateActive');
+    Route::put('/tarefa/{id}', [TaskController::class,'update'])->name('tarefa.update');
+    #TASK
 
 
 Route::get('/ranking', function () {
@@ -70,3 +67,4 @@ Route::get('/ranking', function () {
 
     return view('header') . view('ranking');
 });
+

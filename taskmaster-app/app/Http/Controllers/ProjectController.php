@@ -25,5 +25,10 @@ class ProjectController extends Controller
         return redirect('/task')->with('success', 'Dados registrados com sucesso!');
     }
 
+    public function index()
+    {
+        $projects = Project::all();
+        return view('header') . view('task.index', ['projects' => $projects]);
+    }
 }
 
