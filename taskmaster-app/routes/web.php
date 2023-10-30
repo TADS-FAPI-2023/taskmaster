@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProjectController;
-
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,12 +45,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
     Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
 
-    Route::get('/tarefa/{project_id}', [ProjectController::class, 'showTasks']);
-    Route::post('/taskform', [ProjectController::class, 'taskForm']);
-    Route::post('/sendTaskForm', [ProjectController::class, 'sendTaskForm']);
+    Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
+    Route::post('/taskform', [TaskController::class, 'taskForm']);
+    Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
 
-    Route::put('/updateActive/{id}', [ProjectController::class,'active'])->name('updateActive');
-    Route::put('/tarefa/{id}', [ProjectController::class,'update'])->name('tarefa.update');
+    Route::put('/updateActive/{id}', [TaskController::class,'active'])->name('updateActive');
+    Route::put('/tarefa/{id}', [TaskController::class,'update'])->name('tarefa.update');
 
 });
 
