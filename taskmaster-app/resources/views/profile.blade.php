@@ -17,7 +17,7 @@
             <img src="./img/seta-para-baixo.png" id="button-menu">
             <div id="menu-dropdown">
                 <ul>
-                    <li><img src="./img/home.png" class="icons"><a href="#">Home</a></li>
+                    <li><img src="./img/home.png" class="icons"><a href="http://localhost/taskmaster/taskmaster-app/public/">Home</a></li>
                     <li><img src="./img/config.png" class="icons"><a href="#">Configurações</a></li>
                     <li><img src="./img/interrogacao.png" class="icons"><a href="#">Ajuda</a></li>
                 </ul>
