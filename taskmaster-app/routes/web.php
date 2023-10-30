@@ -6,8 +6,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FileController;
+
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\userController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +51,24 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/tarefa/{id}', [TaskController::class,'update'])->name('tarefa.update');
     #TASK
 
+    #User
+    Route::get('/Users', [userController::class, 'index'])->name('users.index');
+    Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
+    Route::post('/Users', [userController::class, 'store'])->name('users.store');
+    #user
+
+
+
+    Route::get('/ranking', function () {
+
+        return view('header') . view('ranking');
+    });
+
+    Route::get('/profile', [Profile::class, 'profile']);
+
+
+
+
 
 });
 
@@ -60,9 +81,7 @@ Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 
-Route::get('/ranking', function () {
 
 
     return view('header') . view('ranking');
 });
-
