@@ -30,8 +30,7 @@ class TaskController extends Controller
 
     }
 
-  public function sendTaskForm(Request $request)
-{
+  public function sendTaskForm(Request $request){
     $request->validate([
         'name' => 'required',
         'project_id' => 'required',
@@ -44,21 +43,6 @@ class TaskController extends Controller
     Task::create($request->all());
 
     return redirect('/tarefa/' . $request->project_id)->with('success', 'Dados registrados com sucesso!');
-}
-
-    public function active($id){
-        $project = Project::find($id);
-
-        if ($project) {
-            $project->active = 0; // Defina o campo "active" como 0 (desativado)
-            $project->save();
-        }
-
-
-        return back();
-    }
-    public function update(Request $request, $id) {
-
     }
 
 

@@ -27,8 +27,24 @@ class ProjectController extends Controller
 
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::all()->where('active', 1);
         return view('header') . view('task.index', ['projects' => $projects]);
     }
+
+    public function active($id){
+        $project = Project::find($id);
+
+        if ($project) {
+            $project->active = 0; // Defina o campo "active" como 0 (desativado)
+            $project->save();
+        }
+
+
+        return back();
+    }
+    // public function update(Request $request, $id) {
+
+    // }
+
 }
 

@@ -38,20 +38,20 @@ Route::middleware(['auth'])->group(function () {
     #PROJETO
     Route::resource('task', ProjectController::class);
     Route::get('/task',[ProjectController::class, 'index']);
-    Route::get('/profile', [Profile::class, 'profile']);
     Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
     Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
+    Route::put('/updateActive/{id}', [ProjectController::class,'active'])->name('updateActive');
+    // Route::put('/tarefa/{id}', [ProjectController::class,'update'])->name('tarefa.update');
     #PROJETO
 
     #TASK
     Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
     Route::post('/taskform', [TaskController::class, 'taskForm']);
     Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
-    Route::put('/updateActive/{id}', [TaskController::class,'active'])->name('updateActive');
-    Route::put('/tarefa/{id}', [TaskController::class,'update'])->name('tarefa.update');
     #TASK
 
     #User
+    Route::get('/profile', [Profile::class, 'profile']);
     Route::get('/Users', [userController::class, 'index'])->name('users.index');
     Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
     Route::post('/Users', [userController::class, 'store'])->name('users.store');
@@ -72,16 +72,13 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::get('/', function () {
-    return view('header') . view('welcome');
-});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-
-
-
-    return view('header') . view('ranking');
+Route::get('/', function () {
+    return view('header') . view('welcome');
 });
+
+
