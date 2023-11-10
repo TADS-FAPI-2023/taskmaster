@@ -48,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
     Route::post('/taskform', [TaskController::class, 'taskForm']);
     Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
+    Route::put('/tasks/{task}', [TaskController::class,'updateActive'])->name('update.active');
+
     #TASK
 
     #User
