@@ -39,7 +39,6 @@
                         </form>
                     @else
                         @if (!Auth::user()->id == $task->user_id)
-                            <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Editar</a>
                             <form method="POST" action="{{ route('assign.user', $task->id) }}">
                                 @csrf
                                 @method('PUT')

@@ -76,15 +76,16 @@ class TaskController extends Controller
         return back();
     }
 
-    public function assignUser(Request $request){
+    public function assignUser(Request $request, $id){
+       
 
         if(auth()->user()->role == 1){
            return back()->with('error', 'Você não pode se auto atribuir uma tarefa');
         }
       
-        $task = Task::find($request->task_id);
-        // $task = Task::find($id);
-    
+        $task = Task::find($id);
+   
+      
         if ($task) {
             $task->user_id = Auth::user()->id; // Defina o campo "user_id" como o id do usuário logado
             $task->start_date = date('Y-m-d H:i:s');             //adicionar data atual
