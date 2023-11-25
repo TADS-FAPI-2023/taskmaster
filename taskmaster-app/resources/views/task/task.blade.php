@@ -38,11 +38,16 @@
                             <button type="submit" class="btn btn-secondary mt-2">Excluir</button>
                         </form>
                     @else
-                        <form method="POST" action="{{ route('assign.user', $task->id) }}">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit" class="btn btn-secondary mt-2">Se atribuir</button>
-                        </form>
+                        @if (!Auth::user()->id == $task->user_id)
+                            <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Editar</a>
+                            <form method="POST" action="{{ route('assign.user', $task->id) }}">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-secondary mt-2">Se atribuir</button>
+                            </form>
+                        @else
+                            <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Ver</a>
+                        @endif
                     @endif
                 </div>
             </div>
