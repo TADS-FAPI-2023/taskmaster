@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -27,6 +28,15 @@ class ProjectController extends Controller
 
     public function index()
     {
+        $userId = Auth::user()->id;
+        
+        $tasks = Task::where('user_id', $userId)->first();
+
+        if($tasks){
+            $projects = Project::all()->where('id', $tasks->project_id);
+            return view('header') . view('task.index', ['projects' => $projects]);
+        }
+        
         $projects = Project::all()->where('active', 1);
         return view('header') . view('task.index', ['projects' => $projects]);
     }
@@ -47,4 +57,3 @@ class ProjectController extends Controller
     // }
 
 }
-
