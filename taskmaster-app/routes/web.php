@@ -32,6 +32,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     #FILES
     Route::get('/teste', [FileController::class, 'index']);
+    Route::get('/fileEvaluate/{task}', [FileController::class, 'showTaskEvaluate'])->name('showFileEvaluate');
     #FILES
 
     #PROJETO
@@ -47,6 +48,9 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::put('/tasks/{task}', [TaskController::class,'updateActive'])->name('updateActiveTask');
     Route::put('/updateTask/{task}', [TaskController::class, 'updateTask'])->name('updateTask');
     Route::get('/editTaskForm/{task}', [TaskController::class, 'editTaskForm'])->name('editTaskForm');
+    Route::get('/showTasksEvaluate/{project}', [TaskController::class, 'showTasksEvaluate']);
+    Route::put('/taskEvaluate/{task}', [TaskController::class, 'taskEvaluate'])->name('taskEvaluate');
+
     #TASK
 });
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\File;
 use Illuminate\Support\Facades\Auth;
+
 
 class TaskController extends Controller
 {
@@ -53,6 +55,25 @@ class TaskController extends Controller
 
 
         return view('header') . view('task.task', ['project' => $project, 'tasks' => $tasks, 'percente' => $percente]);
+    }
+
+    public function showTasksEvaluate($project_id)
+    {
+        $project = Project::find($project_id);
+        $tasks = Task::where('project_id', $project_id)
+           ->where('active', 1)
+           ->where('status', 'evaluate')->get();
+
+        return view('header') .view('task.evaluate', ['project' => $project, 'tasks' => $tasks]);
+    }
+
+
+    public function taskEvaluate($task_id)
+    {
+        $task = Task::find($task_id);
+        $task->status = "completed";
+        $task->save();
+        return back();
     }
 
     public function taskForm(Request $request){
