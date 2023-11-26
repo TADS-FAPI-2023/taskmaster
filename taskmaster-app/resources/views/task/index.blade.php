@@ -1,5 +1,7 @@
 <div class="container mt-4 p-4" style="border-radius: 0.5rem; background: #1E1D27;">
-    <a class="btn btn-primary" href="{{ url('/formulario') }}">Cadastrar Projeto</a>
+    @if (Auth::user()->role == 1)
+        <a class="btn btn-primary" href="{{ url('/formulario') }}">Cadastrar Projeto</a>
+    @endif
 </div>
 
 <div class="container mt-4">
@@ -14,7 +16,6 @@
                     <p>Descrição: <br> {{ $project->description }}</p>
                     <p>Status: {{ $project->status }}</p>
                     <a class="btn btn-primary" href="{{ url('/tarefa/' . $project->id) }}">Ver</a>
-                    {{-- ver se é admin usando o midleware Isadmin --}}
                     @if (Auth::user()->role == 1)
                         <a class="btn btn-primary" href="{{ url('/formulario/' . $project->id) }}">Editar</a>
                         <form method="POST" action="{{ route('updateActive', ['id' => $project->id]) }}">
