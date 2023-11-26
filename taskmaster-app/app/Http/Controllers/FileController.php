@@ -132,6 +132,11 @@ class FileController extends Controller
      */
     public function update(FileUpdateRequest $request, File $file)
     {
+        if($file->status == 'completed'){
+            return back()->with('error', 'Não é possível editar um arquivo avaliado');
+  
+        }
+        
         $filename = $request->filename->getClientOriginalName();
         $info = pathinfo($filename);
         $newFilename = $info['filename'] . $file->tasks_id . '.' . $info['extension'];
