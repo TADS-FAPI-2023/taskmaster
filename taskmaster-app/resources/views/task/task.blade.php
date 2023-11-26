@@ -45,7 +45,7 @@
                                 <button type="submit" class="btn btn-secondary mt-2">Se atribuir</button>
                             </form>
                         @else
-                            <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Ver</a>
+                            <a class="btn btn-primary" href="{{ url('/files/create') }}">Ver</a>
                         @endif
                     @endif
                 </div>
