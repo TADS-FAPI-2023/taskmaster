@@ -9,15 +9,18 @@
         @foreach ($projects as $key => $project)
             <div class="col-md-4">
                 <div class="container-fluid m-2 p-4"
-                    style="border-radius: 0.5rem; 
-                    background: #1E1D27; 
+                    style="border-radius: 0.5rem;
+                    background: #1E1D27;
                     overflow: hidden;">
                     <h2>Projeto: {{ $project->name }}</h2>
                     <p>Descrição: <br> {{ $project->description }}</p>
                     <p>Status: {{ $project->status }}</p>
                     <a class="btn btn-primary" href="{{ url('/tarefa/' . $project->id) }}">Ver</a>
+
+                    <!-- Adicionado link para o formulário de edição -->
                     @if (Auth::user()->role == 1)
                         <a class="btn btn-primary" href="{{ url('/formulario/' . $project->id) }}">Editar</a>
+                        <!-- Formulário para Exclusão do Projeto -->
                         <form method="POST" action="{{ route('updateActive', ['id' => $project->id]) }}">
                             @csrf
                             @method('PUT')

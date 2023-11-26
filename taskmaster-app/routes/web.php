@@ -38,7 +38,10 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
     Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
     Route::put('/updateActive/{id}', [ProjectController::class,'active'])->name('updateActive');
-     // Route::put('/tarefa/{id}', [ProjectController::class,'update'])->name('tarefa.update');
+    Route::put('/formulario/{id}', [ProjectController::class, 'update']);
+    Route::get('/formulario/{id}', [ProjectController::class, 'showFormUpdate']);
+
+
     #PROJETO
 
     #TASK

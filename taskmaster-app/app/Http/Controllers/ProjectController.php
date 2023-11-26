@@ -29,14 +29,14 @@ class ProjectController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
-        
+
         $tasks = Task::where('user_id', $userId)->first();
 
         if($tasks){
             $projects = Project::all()->where('id', $tasks->project_id);
             return view('header') . view('task.index', ['projects' => $projects]);
         }
-        
+
         $projects = Project::all()->where('active', 1);
         return view('header') . view('task.index', ['projects' => $projects]);
     }
@@ -52,8 +52,29 @@ class ProjectController extends Controller
 
         return back();
     }
-    // public function update(Request $request, $id) {
 
-    // }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+        ]);
 
+        $project = Project::find($id);
+
+        if ($project) {
+            $project->update($request->all());
+        }
+
+        return redirect('/task')->with('success', 'Projeto atualizado com sucesso!');
+    }
+
+
+    public function showFormUpdate($id)
+    {
+        $project = Project::find($id);
+        return view('header') . view('task.formulario', ['project' => $project]);
+
+    }
 }
