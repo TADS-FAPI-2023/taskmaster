@@ -31,7 +31,7 @@
             <input type="submit" class="btn btn-primary" value="Cadastrar Tarefa">
         </form>
 
-        <a class="btn btn-primary mt-2" href="{{ url('/taskEvaluate/' . $project->id) }}">avaliar tarefas</a>
+        <a class="btn btn-primary mt-2" href="{{ url('/showTasksEvaluate/' . $project->id) }}">avaliar tarefas</a>
     @endif
 </div>
 

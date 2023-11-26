@@ -38,6 +38,22 @@ class FileController extends Controller
         return view('header') . view('files.index', ['files' => $files]);
     }
 
+
+    public function showTaskEvaluate($task_id)
+    {
+        $file = File::where('tasks_id', $task_id)->get();
+        $task = Task::find($task_id);
+      
+        if (!$file->isEmpty()) {
+            if (isset($file[0])) {
+                $file = $file[0];
+            }
+            $file->file_url = $this->storage_service->getAwsFile($this->file_path, $file->filename);
+            return view('header') . view('files.evaluate', ['task' => $task, 'file' => $file]);
+        }
+        return view('header') . view('welcome')->with('error', 'Não existe arquivo para avaliar');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
