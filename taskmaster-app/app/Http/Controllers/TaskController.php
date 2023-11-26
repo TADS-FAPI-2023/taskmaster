@@ -23,9 +23,7 @@ class TaskController extends Controller
            $completed = Task::where('project_id', $project_id)
            ->where('active', 1)
            ->where('status', 'completed')->count();
-
-           $percente = 0;
-
+           $percente = 100;
            if($total != 0)
            $percente = $completed / $total * 100;
 
@@ -111,6 +109,36 @@ class TaskController extends Controller
         }
 
         return back();
+    }
+
+    public function editTaskForm(Task $task)
+    {
+        return view('header'). view('task.taskform', [
+            'project_id' => $task->project_id,
+            'task_id' => $task->id,
+            'task_name' => $task->name,
+            'task_type' => $task->type,
+            'task_description' => $task->description,
+            'task_time_limit' => $task->time_limit,
+            'task_difficulty' => $task->difficulty,
+        ]);
+    }
+
+    public function updateTask(Request $request, Task $task)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'time_limit' => 'required|date',
+            'difficulty' => 'required',
+        ]);
+
+        // Atualizar os atributos da tarefa com base nos dados do formulário
+        $task->update($validatedData);
+
+        // Redirecionar para a página desejada após a atualização
+        return redirect('/tarefa/' . $request->project_id);
     }
 
 }

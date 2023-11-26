@@ -59,7 +59,7 @@
                     <p>Dificuldade: {{ $task->difficulty }}</p>
                     @if (Auth::user()->role == 1)
                         <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Ver</a>
-                        <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Editar</a>
+                        <a class="btn btn-primary" href="{{ route('editTaskForm', $task->id) }}">Editar</a>
                         <form method="POST" action="{{ route('updateActiveTask', $task->id) }}}}">
                             @csrf
                             @method('PUT')

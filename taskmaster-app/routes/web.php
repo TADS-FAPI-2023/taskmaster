@@ -40,13 +40,13 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::put('/updateActive/{id}', [ProjectController::class,'active'])->name('updateActive');
     Route::put('/formulario/{id}', [ProjectController::class, 'update']);
     Route::get('/formulario/{id}', [ProjectController::class, 'showFormUpdate']);
-
-
     #PROJETO
 
     #TASK
     Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
     Route::put('/tasks/{task}', [TaskController::class,'updateActive'])->name('updateActiveTask');
+    Route::put('/updateTask/{task}', [TaskController::class, 'updateTask'])->name('updateTask');
+    Route::get('/editTaskForm/{task}', [TaskController::class, 'editTaskForm'])->name('editTaskForm');
     #TASK
 });
 
