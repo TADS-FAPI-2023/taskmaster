@@ -132,7 +132,8 @@ class FileController extends Controller
      */
     public function update(FileUpdateRequest $request, File $file)
     {
-        if($file->status == 'completed'){
+        $task = Task::find($file->tasks_id);
+        if(  $task->status == 'completed'){
             return back()->with('error', 'Não é possível editar um arquivo avaliado');
   
         }
