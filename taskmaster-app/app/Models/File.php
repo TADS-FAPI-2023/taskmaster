@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
-    public $fillable = ['filename','description'];
+    public $fillable = ['filename','description','tasks_id'];
 }

@@ -19,14 +19,19 @@ class TaskController extends Controller
            $total = Task::where('project_id', $project_id)
            ->where('active', 1)
            ->count();
-           
+
            $completed = Task::where('project_id', $project_id)
            ->where('active', 1)
            ->where('status', 'completed')->count();
 
+           $percente = 0;
+
+           if($total != 0)
            $percente = $completed / $total * 100;
 
-     
+
+
+
         if(auth()->user()->role == 1){
           $tasks = Task::where('project_id', $project_id)
             ->where('active', 1)
@@ -37,8 +42,8 @@ class TaskController extends Controller
          }
         $userId = Auth::user()->id;
         $userTask = Task::where('user_id', $userId)->get();
-        
-        if(!$userTask->isEmpty()){        
+
+        if(!$userTask->isEmpty()){
             return view('header') . view('task.task', ['project' => $project, 'tasks' => $userTask,  'percente' => $percente]);
         }
 
@@ -47,8 +52,8 @@ class TaskController extends Controller
                       ->where('status', 'active')
                       ->get();
 
- 
-    
+
+
         return view('header') . view('task.task', ['project' => $project, 'tasks' => $tasks, 'percente' => $percente]);
     }
 
@@ -79,33 +84,33 @@ class TaskController extends Controller
 
     public function updateActive($id){
         $task = Task::find($id);
-    
+
         if ($task) {
             $task->active = 0; // Defina o campo "active" como 0 (desativado)
             $task->save();
         }
-    
+
         return back();
     }
 
     public function assignUser(Request $request, $id){
-       
+
 
         if(auth()->user()->role == 1){
            return back()->with('error', 'Você não pode se auto atribuir uma tarefa');
         }
-      
+
         $task = Task::find($id);
-   
-      
+
+
         if ($task) {
             $task->user_id = Auth::user()->id; // Defina o campo "user_id" como o id do usuário logado
             $task->start_date = date('Y-m-d H:i:s');             //adicionar data atual
             $task->status = "assingned";
             $task->save();
         }
-    
+
         return back();
     }
-    
+
 }

@@ -36,7 +36,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     #PROJETO
     Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
-    Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);   
+    Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
     Route::put('/updateActive/{id}', [ProjectController::class,'active'])->name('updateActive');
      // Route::put('/tarefa/{id}', [ProjectController::class,'update'])->name('tarefa.update');
     #PROJETO
@@ -50,42 +50,41 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 // so pode acessar as rotas abaixo se estiver logado
 Route::middleware(['auth'])->group(function () {
 
-          #FILES
-    Route::resource('files', FileController::class);
-  
+    #FILES
+    Route::get('files/create/{task}', [FileController::class, 'create'])->name("sendFile");
+    Route::post('files/store/{task}', [FileController::class, 'store'])->name("files.store");
+    Route::put('files/store/{file}', [FileController::class, 'update'])->name("files.edit");
     #FILES
 
 
-        #User
-        Route::get('/profile', [Profile::class, 'profile']);
-        Route::get('/Users', [userController::class, 'index'])->name('users.index');
-        Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
-        Route::post('/Users', [userController::class, 'store'])->name('users.store');
-        #user
-  
-        #PROJETO
-        Route::resource('task', ProjectController::class);
-        Route::get('/task',[ProjectController::class, 'index']);       
-        #PROJETO
+    #User
+    Route::get('/profile', [Profile::class, 'profile']);
+    Route::get('/Users', [userController::class, 'index'])->name('users.index');
+    Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
+    Route::post('/Users', [userController::class, 'store'])->name('users.store');
+    #user
 
-        #TASK
-        Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
-        Route::post('/taskform', [TaskController::class, 'taskForm']);
-        Route::put('/tasks/{task}/assign', [TaskController::class, 'assignUser'])->name('assign.user');
+    #PROJETO
+    Route::resource('task', ProjectController::class);
+    Route::get('/task',[ProjectController::class, 'index']);
+    #PROJETO
 
-        #TASK
+    #TASK
+    Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
+    Route::post('/taskform', [TaskController::class, 'taskForm']);
+    Route::put('/tasks/{task}/assign', [TaskController::class, 'assignUser'])->name('assign.user');
+    #TASK
 
-  
-  
+
       Route::get('/ranking', function () {
-  
+
           return view('header') . view('ranking');
       });
-  
+
       Route::get('/profile', [Profile::class, 'profile']);
-  
-  
-    
+
+
+
 });
 
 
