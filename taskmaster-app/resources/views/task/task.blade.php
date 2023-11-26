@@ -1,10 +1,37 @@
-<div class="container mt-4 p-4" style="border-radius: 0.5rem; background: #1E1D27;">
+<div class="container mt-4 p-4"
+    style="border-radius: 0.5rem; background: #1E1D27; overflow: hidden;
+                color: #f4f4f5;
+                font-family: Inter;">
+
+    <p>Projeto: {{ $project->name }}</p>
+    <p>Descrição: <br> {{ $project->description }}</p>
+    <!-- HTML -->
+    <style>
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+        }
+
+        .progress {
+            height: 20px;
+            background-color: #4caf50;
+            border-radius: 5px;
+        }
+    </style>
+    <p>Progresso: {{ $percente }}%</p>
+    <div class="progress-bar mb-4 ">
+        <div class="progress" style="width: {{ $percente }}%"></div>
+    </div>
+
     @if (Auth::user()->role == 1)
         <form action="{{ url('/taskform') }}" method="post">
             @csrf
             <input name="project_id" type="hidden" value="{{ $project->id }}">
             <input type="submit" class="btn btn-primary" value="Cadastrar Tarefa">
         </form>
+
+        <a class="btn btn-primary mt-2" href="{{ url('/taskEvaluate/' . $project->id) }}">avaliar tarefas</a>
     @endif
 </div>
 
@@ -31,6 +58,7 @@
                     <p>Prazo de Tempo: {{ $task->time_limit }}</p>
                     <p>Dificuldade: {{ $task->difficulty }}</p>
                     @if (Auth::user()->role == 1)
+                        <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Ver</a>
                         <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Editar</a>
                         <form method="POST" action="{{ route('updateActiveTask', $task->id) }}}}">
                             @csrf
