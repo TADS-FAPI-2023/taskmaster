@@ -39,9 +39,13 @@ class TaskController extends Controller
             ->get();
             return view('header') . view('task.task', ['project' => $project, 'tasks' => $tasks, 'percente' => $percente]);
 
+
+            
          }
         $userId = Auth::user()->id;
-        $userTask = Task::where('user_id', $userId)->get();
+        $userTask = Task::where('user_id', $userId)
+        ->where('status', '!=', 'completed')
+        ->get();
 
         if(!$userTask->isEmpty()){
             return view('header') . view('task.task', ['project' => $project, 'tasks' => $userTask,  'percente' => $percente]);
