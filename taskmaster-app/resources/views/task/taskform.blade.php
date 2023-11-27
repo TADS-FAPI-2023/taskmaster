@@ -34,7 +34,7 @@
 
         <div class="row mb-3">
             <div class="col-12 col-md-6">
-                <label for="time_limit" class="form-label text-light">Prazo de Tempo "Em dias":</label>
+                <label for="time_limit" class="form-label text-light">Prazo de Tempo:</label>
                 <input class="form-control" type="date" id="time_limit" name="time_limit"
                     value="{{ $task_time_limit ?? '' }}" min="{{ date('Y-m-d') }}" required>
             </div>
