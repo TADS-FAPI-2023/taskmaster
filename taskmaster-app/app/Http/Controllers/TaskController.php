@@ -76,6 +76,7 @@ class TaskController extends Controller
     {
         $task = Task::find($task_id);
         $task->status = "completed";
+        $task->end_date = date('Y-m-d H:i:s');     
         $task->save();
         return redirect('/tarefa/' . $task->project_id);
     }
