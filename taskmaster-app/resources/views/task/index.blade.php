@@ -22,7 +22,13 @@
                         <form method="POST" action="{{ route('updateActive', ['id' => $project->id]) }}">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-secondary mt-2">Excluir</button>
+                            <button type="submit" class="btn btn-secondary mt-2"
+                                onclick="return confirmDelete()">Excluir</button>
+                            <script>
+                                function confirmDelete() {
+                                    return confirm('Tem certeza que deseja excluir este projeto?');
+                                }
+                            </script>
                         </form>
                     @endif
                 </div>
