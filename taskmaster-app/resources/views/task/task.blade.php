@@ -53,7 +53,6 @@
                 ">
                     <h2>Tarefa: {{ $task->name }}</h2>
                     <p>Tipo: {{ $task->type }}</p>
-                    <p>Projeto: {{ $task->project_id }}</p>
                     <p>Descrição: <br> {{ $task->description }}</p>
                     <p>Prazo de Tempo: {{ $task->time_limit }}</p>
                     <p>Dificuldade: {{ $task->difficulty }}</p>
