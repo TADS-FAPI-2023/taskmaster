@@ -62,8 +62,14 @@
                         <form method="POST" action="{{ route('updateActiveTask', $task->id) }}}}">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-secondary mt-2">Excluir</button>
+                            <button type="submit" class="btn btn-secondary mt-2"
+                                onclick="return confirmDelete()">Excluir</button>
                         </form>
+                        <script>
+                            function confirmDelete() {
+                                return confirm('Tem certeza que deseja excluir este projeto?');
+                            }
+                        </script>
                     @else
                         @if (!Auth::user()->id == $task->user_id)
                             <form method="POST" action="{{ route('assign.user', $task->id) }}">
