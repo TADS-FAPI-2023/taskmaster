@@ -58,7 +58,7 @@
                     <p>Prazo de Tempo: {{ $task->time_limit }}</p>
                     <p>Dificuldade: {{ $task->difficulty }}</p>
                     @if (Auth::user()->role == 1)
-                        <a class="btn btn-primary" href="{{ url('/taskform/' . $task->id) }}">Ver</a>
+                        <p>Status: {{ $task->status }}</p>
                         <a class="btn btn-primary" href="{{ route('editTaskForm', $task->id) }}">Editar</a>
                         <form method="POST" action="{{ route('updateActiveTask', $task->id) }}}}">
                             @csrf

@@ -30,7 +30,10 @@ class ProjectController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $tasks = Task::where('user_id', $userId)->first();
+        $tasks = Task::where('user_id', $userId)
+        ->where('status', '!=', 'completed')
+        ->first();
+    
 
         if($tasks){
             $projects = Project::all()->where('id', $tasks->project_id);
