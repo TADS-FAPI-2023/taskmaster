@@ -36,7 +36,7 @@ $ composer install
 # Copie o arquivo .env.example e renomeie para .env
 $ cp .env.example .env
 
-Execute a aplicação em modo de desenvolvimento
+#Execute a aplicação em modo de desenvolvimento
 $ php artisan serve
 
 # O servidor inciará na porta:8000 - acesse http://localhost:8000 
