@@ -120,7 +120,7 @@ class FileController extends Controller
     public function edit(File $file)
     {
         $file->file_url = $this->storage_service->getAwsFile($this->file_path, $file->filename);
-        return view('header') . view('files.edit', ['file' => $file]);
+        return view('header') . view('files.edit', ['file' => $file])->with('success', 'Arquivo editado com sucesso');
     }
 
     /**
@@ -154,7 +154,7 @@ class FileController extends Controller
         $task->save();
         $file = File::find($file->id);
         $file->file_url = $this->storage_service->getAwsFile($this->file_path, $file->filename);
-        return view('header') . view('files.edit', ['task' => $task, 'file' => $file]);
+        return redirect()->route('sendFile', [$file->tasks_id])->with('success', 'Arquivo editado com sucesso');
     }
     /**
      * Remove the specified resource from storage.
