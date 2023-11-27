@@ -77,7 +77,7 @@ class TaskController extends Controller
         $task = Task::find($task_id);
         $task->status = "completed";
         $task->save();
-        return back();
+        return redirect('/tarefa/' . $task->project_id);
     }
 
     public function taskForm(Request $request){
