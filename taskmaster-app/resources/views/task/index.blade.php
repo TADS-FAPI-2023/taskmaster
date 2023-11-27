@@ -1,11 +1,11 @@
-<div class="container mt-4 p-4" style="border-radius: 0.5rem; background: #1E1D27;">
+<div class="container mt-4 p-4 text-light" style="border-radius: 0.5rem; background: #1E1D27;">
     <h2>Projetos cadastrados no TaskMaster</h2>
     @if (Auth::user()->role == 1)
         <a class="btn btn-primary" href="{{ url('/formulario') }}">Cadastrar Projeto</a>
     @endif
 </div>
 
-<div class="container mt-4">
+<div class="container mt-4 text-light">
     <div class="row">
         @foreach ($projects as $key => $project)
             <div class="col-md-4">

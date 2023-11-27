@@ -164,7 +164,7 @@ class TaskController extends Controller
         $task->update($validatedData);
 
         // Redirecionar para a página desejada após a atualização
-        return redirect('/tarefa/' . $request->project_id);
-    }
+        return redirect('/tarefa/' . $request->project_id)->with('success', 'Dados registrados com sucesso!');
+        }
 
 }

@@ -1,4 +1,4 @@
-<div class="container mt-4 p-4"
+<div class="container mt-4 p-4 text-light"
     style="border-radius: 0.5rem; background: #1E1D27; overflow: hidden;
                 color: #f4f4f5;
                 font-family: Inter;">
