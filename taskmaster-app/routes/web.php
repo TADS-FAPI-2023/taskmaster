@@ -27,64 +27,85 @@ Auth::routes();
 
 
 
+// so pode acessar as rotas abaixo se estiver logado e for admin
+Route::middleware(['auth','isAdmin'])->group(function () {
+
+    #FILES
+    Route::get('/teste', [FileController::class, 'index']);
+    Route::get('/fileEvaluate/{task}', [FileController::class, 'showTaskEvaluate'])->name('showFileEvaluate');
+    #FILES
+
+    #PROJETO
+    Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
+    Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
+    Route::put('/updateActive/{id}', [ProjectController::class,'active'])->name('updateActive');
+    Route::put('/formulario/{id}', [ProjectController::class, 'update']);
+    Route::get('/formulario/{id}', [ProjectController::class, 'showFormUpdate']);
+    #PROJETO
+
+    #TASK
+    Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
+    Route::put('/tasks/{task}', [TaskController::class,'updateActive'])->name('updateActiveTask');
+    Route::put('/updateTask/{task}', [TaskController::class, 'updateTask'])->name('updateTask');
+    Route::get('/editTaskForm/{task}', [TaskController::class, 'editTaskForm'])->name('editTaskForm');
+    Route::get('/showTasksEvaluate/{project}', [TaskController::class, 'showTasksEvaluate']);
+    Route::put('/taskEvaluate/{task}', [TaskController::class, 'taskEvaluate'])->name('taskEvaluate');
+
+    #TASK
+});
+
 // so pode acessar as rotas abaixo se estiver logado
 Route::middleware(['auth'])->group(function () {
 
     #FILES
-    Route::resource('files', FileController::class);
-    Route::get('/teste', [FileController::class, 'index']);
+    Route::get('files/create/{task}', [FileController::class, 'create'])->name("sendFile");
+    Route::post('files/store/{task}', [FileController::class, 'store'])->name("files.store");
+    Route::put('files/store/{file}', [FileController::class, 'update'])->name("files.edit");
     #FILES
+
+
+    #User
+    Route::get('/profile', [Profile::class, 'profile']);
+    Route::get('/Users', [userController::class, 'index'])->name('users.index');
+    Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
+    Route::post('/Users', [userController::class, 'store'])->name('users.store');
+    #user
 
     #PROJETO
     Route::resource('task', ProjectController::class);
     Route::get('/task',[ProjectController::class, 'index']);
-    Route::get('/profile', [Profile::class, 'profile']);
-    Route::get('/formulario', [ProjectController::class, 'exibirFormulario']);
-    Route::post('/formulario', [ProjectController::class, 'processarFormulario']);
     #PROJETO
-
 
     #TASK
     Route::get('/tarefa/{project_id}', [TaskController::class, 'showTasks']);
     Route::post('/taskform', [TaskController::class, 'taskForm']);
-    Route::post('/sendTaskForm', [TaskController::class, 'sendTaskForm']);
-    Route::put('/updateActive/{id}', [TaskController::class,'active'])->name('updateActive');
-    Route::put('/tarefa/{id}', [TaskController::class,'update'])->name('tarefa.update');
+    Route::put('/tasks/{task}/assign', [TaskController::class, 'assignUser'])->name('assign.user');
     #TASK
 
-    #User
-    Route::get('/Users', [userController::class, 'index'])->name('users.index');
-    Route::get('/Users/Create', [userController::class, 'create'])->name('users.create'); 
-    Route::post('/Users', [userController::class, 'store'])->name('users.store');
-    #user
+
+      Route::get('/ranking', function () {
+
+          return view('header') . view('ranking');
+      });
+
+      Route::get('/profile', [Profile::class, 'profile']);
 
 
 
-    Route::get('/ranking', function () {
-
-        return view('header') . view('ranking');
-    });
-
-    Route::get('/profile', [Profile::class, 'profile']);
-
-
-
-  
-  
-});
-
-Route::get('/', function () {
-    return view('header') . view('welcome');
 });
 
 
+<<<<<<< HEAD
+
+=======
+Route::resource('login', LoginController::class);
+>>>>>>> c1255ec44ec75fbde517e2dbd58f2fc6367e4380
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 
 
-
-
-
-
+Route::get('/', function () {
+    return view('header') . view('welcome');
+});

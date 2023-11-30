@@ -1,5 +1,11 @@
 <section style="margin-top: 5%;">
-    <div class="container" style="border-radius: 0.5rem; background: #13111B;">
+    <div class="container"
+        style="border-radius: 0.5rem; background: #13111B;  color: #f4f4f5;
+        font-family: Inter;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;">
         @yield('content')
     </div>
 </section>

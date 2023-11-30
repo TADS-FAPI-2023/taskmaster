@@ -1,13 +1,35 @@
 @extends('layouts.app')
 @section('title', 'Tarefa')
 @section('content_header', 'Atualizar Arquivo')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 @section('content')
-    <a class="btn btn-info btn-xl" href="{{ route('files.index') }}">Voltar</a><br><br>
-    <form action="{{ route('files.update', $file->id) }}" method="post" enctype="multipart/form-data">
+
+
+
+
+    <form action="{{ route('files.edit', $file->id) }}" method="post" enctype="multipart/form-data"
+        style=" color: #f4f4f5;
+        font-family: Inter;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;">
         @method('PUT')
         @csrf
+
+        <h2>Tarefa: {{ $task->name }}</h2>
+        <p>Tipo: {{ $task->type }}</p>
+        <p>Projeto: {{ $task->project_id }}</p>
+        <p>Descrição: <br> {{ $task->description }}</p>
+        <p>Prazo de Tempo: {{ $task->time_limit }}</p>
+        <p>Dificuldade: {{ $task->difficulty }}</p>
         <div class="form-group col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
-            <a class="btn btn-outline-success" href="{{ $file->file_url }}"><i class="fa-solid fa-cloud-arrow-down"></i> Baixar
+            <a class="btn btn-outline-success" href="{{ $file->file_url }}"><i class="fa-solid fa-cloud-arrow-down"></i>
+                Baixar
                 arquivo</a><br><br>
         </div>
         <div class="form-group col-xl-6 col-lg-6 col-md-8 col-sm-8 col-12">
@@ -35,4 +57,6 @@
             <button class="btn btn-primary btn-xl"><i class="fa-solid fa-share"></i> Enviar</button>
         </div>
     </form>
+    <a class="btn btn-info btn-xl" href="{{ url('/tarefa/' . $task->project_id) }}">Voltar</a><br><br>
+
 @endsection
