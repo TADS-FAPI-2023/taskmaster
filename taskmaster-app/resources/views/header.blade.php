@@ -74,7 +74,7 @@
                         <a class="nav-link" href="<?= url('/ranking') ?>">Ranking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= url('/profile') ?>">Profile</a>
+                        <a class="nav-link" href="{{ url('/profile/' . auth()->user()->id) }}">Profile</a>
                     </li>
 
                 </ul>
