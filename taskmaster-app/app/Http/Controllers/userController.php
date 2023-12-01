@@ -19,8 +19,9 @@ class userController extends Controller
 
     public function index()
     {
-        $User = $this->objUser->all();
-        return view('users.index', compact('User'));
+        $User = $this->objUser->where('role', '=', 0)->get();
+
+        return view('header') . view('ranking')->with('User', $User);
     }
 
 

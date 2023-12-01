@@ -65,11 +65,15 @@ Route::middleware(['auth'])->group(function () {
 
 
     #User
-    Route::get('/profile', [Profile::class, 'profile']);
+    Route::get('/profile/{id}', [Profile::class, 'profile']);
     Route::get('/Users', [userController::class, 'index'])->name('users.index');
     Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
     Route::post('/Users', [userController::class, 'store'])->name('users.store');
     #user
+
+    #RANKING
+    Route::get('/ranking', [userController::class, 'index'])->name('users.ranking');
+    #ranking
 
     #PROJETO
     Route::resource('task', ProjectController::class);
@@ -82,11 +86,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/tasks/{task}/assign', [TaskController::class, 'assignUser'])->name('assign.user');
     #TASK
 
-
-      Route::get('/ranking', function () {
-
-          return view('header') . view('ranking');
-      });
 
       Route::get('/profile', [Profile::class, 'profile']);
 
