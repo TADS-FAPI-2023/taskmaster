@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use view;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use DB;
 
 class Ranking extends Controller
 {
@@ -18,8 +20,8 @@ class Ranking extends Controller
     public function index()  
     {
 
-        $User = $this->objUser->all();
-
-        return view("header")->with('User', $User)->view("ranking", compact('User'));
+        $User = DB::table('users')->join('tasks','users.id', '=', "tasks.user_id")->select('users.name as name', 'tasks.name as task')->get();
+        dd($User);
+        // return view("header")->with('User', $User)->view("ranking", compact('User'));
     }
 }

@@ -94,11 +94,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-<<<<<<< HEAD
-
-=======
-Route::resource('login', LoginController::class);
->>>>>>> c1255ec44ec75fbde517e2dbd58f2fc6367e4380
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login' , [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
