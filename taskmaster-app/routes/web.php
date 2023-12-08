@@ -65,10 +65,13 @@ Route::middleware(['auth'])->group(function () {
 
 
     #User
-    Route::get('/profile/{id}', [Profile::class, 'profile']);
+    Route::get('/profile/{id}', [Profile::class, 'profile'])->name('profile');
     Route::get('/Users', [userController::class, 'index'])->name('users.index');
     Route::get('/Users/Create', [userController::class, 'create'])->name('users.create');
     Route::post('/Users', [userController::class, 'store'])->name('users.store');
+    Route::get('/editProfile/{id}', [Profile::class, 'edit']);
+    Route::put('/editProfile/{id}', [Profile::class, 'update'])->name('users.update');
+        
     #user
 
     #RANKING
@@ -87,7 +90,8 @@ Route::middleware(['auth'])->group(function () {
     #TASK
 
 
-      Route::get('/profile', [Profile::class, 'profile']);
+    Route::get('/profile', [Profile::class, 'profile']);
+    Route::get('/profileEdit', [Profile::class, 'edit_profile']);
 
 
 

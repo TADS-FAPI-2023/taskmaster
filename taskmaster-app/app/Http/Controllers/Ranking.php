@@ -21,7 +21,7 @@ class Ranking extends Controller
     {
 
         $User = DB::table('users')->join('tasks','users.id', '=', "tasks.user_id")->select('users.name as name', 'tasks.name as task')->get();
-        dd($User);
-        // return view("header")->with('User', $User)->view("ranking", compact('User'));
+        // dd($User);
+        return view("header")->with('User', $User).view("ranking", compact('User'));
     }
 }

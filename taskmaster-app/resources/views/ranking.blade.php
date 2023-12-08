@@ -21,7 +21,6 @@ $num = 1;
     <div class="container mt-4 text-light">
         <ul class="div-geral">
             @foreach ($User as $Users)
-
             <li class="div-rank">
                 <div class="div-inf">
                     <p id="num-rank">{{ $loop->index + 1 }}</p>
@@ -33,7 +32,7 @@ $num = 1;
                         <p>{{ $Users->task }}</p>
                     </div>
                     <div>
-                        <button class="btn-ver"><a href="#">Ver mais</a></button>
+                        <button class="btn-ver"><a href="profile/{{$Users->id}}">Ver mais</a></button>
                     </div>
                 </div>
             </li>

@@ -23,7 +23,7 @@ class userController extends Controller
     {
         $User = DB::table('users')
         ->join('tasks','users.id', '=', "tasks.user_id")
-        ->select('users.name as name', 'tasks.name as task')->get()->toArray();
+        ->select('users.id', 'users.name as name', 'tasks.name as task')->get()->toArray();
         // dd($User);
         $task = DB::table('tasks')->get();
 

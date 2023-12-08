@@ -21,8 +21,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'bio',
+        'image',
     ];
 
+    public function getImageURL()
+    {
+
+
+        return asset('storage/profile' . $this->image);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

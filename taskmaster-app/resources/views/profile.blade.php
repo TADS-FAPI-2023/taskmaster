@@ -1,9 +1,3 @@
-<?php 
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,20 +5,18 @@
 <div class="container">
     <div class="container-card">
         <div class="card-usuario">
-            <img src="./img/avatar.jpg" class="img-card">
+            <img src="{{ $User->getImageURL() }}" >
             <p>{{ $userProfile['name'] }}</p>
             <p>{{ $userProfile['email'] }}</p>
             <p>Desenvolvedor Front</p>
+            <a href="{{ url('/editProfile/' . auth()->user()->id) }}"><button>Editar perfil</button></a>
         </div>
         <div class="card-informacoes">
             <div class="informacoes-titulo">
                 <h2>Biografia</h2>
             </div>
             <div class="informacoes-biografia">
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat."
+                {{ $userProfile['bio']}}
             </div>
             <div class="informacoes-medal">
             </div>
@@ -48,6 +40,6 @@
         <p>Projetos concluidos</p>
     </div>
 </div>
-    <p></p>
-    <p>exibindo id: {{ $id }}</p>
+<p></p>
+
 </html>

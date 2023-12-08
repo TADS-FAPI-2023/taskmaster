@@ -21,8 +21,18 @@ class Users extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
-    // protected $hidden = [];
+    protected $fillable = [
+        'name',
+        'email',
+        'image',
+        'bio',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
 
     /*
     |--------------------------------------------------------------------------
